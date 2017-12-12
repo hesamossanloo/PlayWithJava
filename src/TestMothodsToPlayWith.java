@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class AlleTheMothodsToPlayWith {
+public class TestMothodsToPlayWith {
 
 	public void test() {
 		int[] b,c;

@@ -1,24 +1,21 @@
 import java.util.Arrays;
 
-public class SortingAlgorithms {
-	public void insertionSort() {
-		final int[] a = {6, 2, 4, 5, 1, 3};
-
+public class SortingAlgorithms implements SortingAlgorithmsI {
+	@Override
+	public void insertionSort(final int[] a) {
 		System.out.println("InsertionSort: Before sort: " + Arrays.toString(a));
 		for (int i = 1; i < a.length; i++) {
 			for (int j = 0; j < i; j++) {
 				if (a[j] > a[i]) {
-					final int temp = a[i];
-					a[i] = a[j];
-					a[j] = temp;
+					swap(a, j, i);
 				}
 			}
 		}
 		System.out.println("InsertionSort: After sort: " + Arrays.toString(a));
 	}
 
-	public void selectionSort() {
-		final int[] a = {1, 2, 4, 5, 2, 3};
+	@Override
+	public void selectionSort(final int[] a) {
 		System.out.println("SelectionSort: Before sort: " + Arrays.toString(a));
 		for (int i = 0; i < a.length; i++) {
 			int smallest = i;
@@ -27,23 +24,21 @@ public class SortingAlgorithms {
 					smallest = j;
 				}
 			}
-			final int swapVar = a[i];
-			a[i] = a[smallest];
-			a[smallest] = swapVar;
+			swap(a, smallest, i);
 		}
 		System.out.println("SelectionSort: After sort: " + Arrays.toString(a));
 	}
 
-	public void mergeSortStarter() {
-		final int[] a = {0, 1, 2, 4, 5, 1, 3, 8};
+	@Override
+	public void mergeSortStarter(final int[] a) {
 		System.out.println("MergeSort: Before sort: " + Arrays.toString(a));
 		mergeSort(a, 1, 7);
 		System.out.println("MergeSort: After sort: " + Arrays.toString(a));
 	}
 
-	public void mergeSort(final int[] mainArray, final int startIndex, final int endIndex) {
+	private void mergeSort(final int[] mainArray, final int startIndex, final int endIndex) {
 		if (startIndex < endIndex) {
-			int middleIndex = (endIndex + startIndex) / 2;
+			final int middleIndex = (endIndex + startIndex) / 2;
 			mergeSort(mainArray, startIndex, middleIndex);
 			mergeSort(mainArray, middleIndex + 1, endIndex);
 			merge(mainArray, startIndex, middleIndex, endIndex);
@@ -64,12 +59,12 @@ public class SortingAlgorithms {
 		for (int z = startIndex; z < endIndex; z++) {
 			if (leftArray[i] <= rightArray[j]) {
 				mainArray[z] = leftArray[i];
-				if (i < leftArray.length-1) {
+				if (i < leftArray.length - 1) {
 					i++;
 				}
 			} else {
 				mainArray[z] = rightArray[j];
-				if (j < rightArray.length-1) {
+				if (j < rightArray.length - 1) {
 					j++;
 				}
 			}
@@ -77,4 +72,42 @@ public class SortingAlgorithms {
 		return mainArray;
 	}
 
+	@Override
+	public void bubbleSort(final int[] a) {
+		System.out.println("bubbleSort: Before sort: " + Arrays.toString(a));
+		for (int i = 0; i < a.length; i++) {
+			for (int j = i + 1; j < a.length; j++) {
+				if (a[i] > a[j]) {
+					swap(a, i, j);
+				}
+			}
+		}
+		System.out.println("bubbleSort: After sort: " + Arrays.toString(a));
+	}
+
+	private void swap(int[] array, int i, int j) {
+		int tmp = array[j];
+		array[j] = array[i];
+		array[i] = tmp;
+	}
+
+	@Override
+	public void heapSort(int[] a) {
+		buildMaxHeap(a);
+		maxHeapify(a, 1);
+	}
+
+	private void maxHeapify(int[] a, int i) {
+		int left = 2 * i;
+		int right = 2 * i + 1;
+		int largest = 0;
+		if (left <= a.length && a[left] > a[i]) {
+			largest = left;
+		} else {
+			largest = i;
+		}
+		if(right<=a.length){
+
+		}
+	}
 }
