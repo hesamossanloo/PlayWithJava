@@ -1,11 +1,12 @@
-import sort.MergeSort;
+import sort.QuickSort;
 
 public class Start {
+	/*
+	 * Initialize your Sorting class here and call the sort() method
+	 */
 	public static void main(String[] args) {
-		final int[] a = {0, 1, 2, 4, 5, 1, 3, 8};
-//		HeapSort heapSort = new HeapSort();
-//		heapSort.sort(a);
-		MergeSort mergeSort = new MergeSort();
-		mergeSort.sort(a);
+		final int[] a = {0, 1, 2, 8, 5, 1, 3, 4};
+		QuickSort quickSort = new QuickSort();
+		quickSort.sort(a);
 	}
 }
