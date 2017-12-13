@@ -1,8 +1,11 @@
+import sort.MergeSort;
+
 public class Start {
 	public static void main(String[] args) {
-//		TestMothodsToPlayWith alleTheMothodsToPlayWith = new TestMothodsToPlayWith();
 		final int[] a = {0, 1, 2, 4, 5, 1, 3, 8};
-		SortingAlgorithmsI sortingAlgorithms = new SortingAlgorithms();
-		sortingAlgorithms.bubbleSort(a);
+//		HeapSort heapSort = new HeapSort();
+//		heapSort.sort(a);
+		MergeSort mergeSort = new MergeSort();
+		mergeSort.sort(a);
 	}
 }
